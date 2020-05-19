@@ -59,7 +59,7 @@ do
 
     # Set the actions to be taken for each possible orientation
     case "$line" in
-        normal)
+        left-up)
             # re-enable backlight
             dbus-send --print-reply=literal --type=method_call --system --dest=org.freedesktop.UPower /org/freedesktop/UPower/KbdBacklight org.freedesktop.UPower.KbdBacklight.SetBrightness int32:1
             remove_keyboard enable
@@ -67,7 +67,7 @@ do
             rotate_cursor 1 0 0 0 1 0 0 0 1
             install_background normal
             ;;
-        bottom-up)
+        right-up)
             # disable backlight
             dbus-send --print-reply=literal --type=method_call --system --dest=org.freedesktop.UPower /org/freedesktop/UPower/KbdBacklight org.freedesktop.UPower.KbdBacklight.SetBrightness int32:0
             remove_keyboard disable
@@ -75,7 +75,7 @@ do
             rotate_cursor -1 0 1 0 -1 1 0 0 1
             install_background bottom-up
             ;;
-        right-up)
+        bottom-up)
             # disable backlight
             dbus-send --print-reply=literal --type=method_call --system --dest=org.freedesktop.UPower /org/freedesktop/UPower/KbdBacklight org.freedesktop.UPower.KbdBacklight.SetBrightness int32:0
             remove_keyboard disable
@@ -83,7 +83,7 @@ do
             rotate_cursor 0 1 0 -1 0 1 0 0 1
             install_background right-up
             ;;
-        left-up)
+        normal)
             # disable backlight
             dbus-send --print-reply=literal --type=method_call --system --dest=org.freedesktop.UPower /org/freedesktop/UPower/KbdBacklight org.freedesktop.UPower.KbdBacklight.SetBrightness int32:0
             remove_keyboard disable
