@@ -1,4 +1,16 @@
 const Applet = imports.ui.applet;
+const GLib = imports.gi.GLib;
+
+function run(cmd) {
+    try {
+        let [result, stdout, stderr] = GLib.spawn_command_line_sync(cmd);
+        if (stdout !== null) {
+            return stdout.toString();
+        }
+    } catch (error) {
+        global.logError(error.message);
+    }
+}
 
 
 class MyApplet extends Applet.IconApplet {
@@ -13,8 +25,10 @@ class MyApplet extends Applet.IconApplet {
     updateIcon() {
         if (this.rotationEnabled === true) {
             this.set_applet_icon_name("rotation-allowed-symbolic");
+            run('systemctl --user start auto-rotate');
         } else {
             this.set_applet_icon_name("rotation-locked-symbolic");
+            run('systemctl --user stop auto-rotate');
         }
     }
 
