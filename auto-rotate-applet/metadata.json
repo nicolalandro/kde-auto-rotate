@@ -2,5 +2,5 @@
     "uuid": "auto-rotate-applet",
     "name": "Auto Rotate",
     "description": "Use applet to auto-rotate to enable and disable auto-rotation",
-    "icon": "rotation-allowed-symbolik"
+    "icon": "rotation-allowed-symbolic"
 }
