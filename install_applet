@@ -1,0 +1,7 @@
+#!/bin/sh
+#
+# auto-rotate applet
+#
+mkdir -p ~/.local/share/cinnamon/applets/
+cp -fr ./auto-rotate-applet ~/.local/share/cinnamon/applets/
+
